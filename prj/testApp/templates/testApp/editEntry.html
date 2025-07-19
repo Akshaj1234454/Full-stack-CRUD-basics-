@@ -1,0 +1,61 @@
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'figma/css/globalsApp.css' %}" />
+    <link rel="stylesheet" href="{% static 'figma/css/styleApp.css' %}" />
+    <title>Edit Your Details</title>
+  </head>
+  <body>
+    <main class="data-page">
+      <section class="overlap-group-wrapper">
+        <div class="overlap-group">
+          <h1 class="text-wrapper-3">Edit your details</h1>
+          
+          <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+              <label for="name" class="text-wrapper">Name</label>
+              <input type="text" name="name" value="{{ entry.name }}"><br>
+            </div>
+
+            <div class="form-group">
+              <label for="age" class="div">Age</label>
+              <input type="text" name="age" value="{{ entry.age }}"><br>
+            </div>
+
+            <div class="form-group">
+              <label for="contact" class="text-wrapper-2">Contact</label>
+              <input type="text" name="contact" value="{{ entry.contact }}"><br>
+            </div>
+
+            <div class="form-group">
+              <label for="city" class="contact">City</label>
+              <input type="text" name="city" value="{{ entry.city }}"><br>
+            </div>
+
+            <button type="submit" class="submit-button">
+              <div class="overlap-2">
+                <span class="button-text">Submit</span>
+                <div class="ellipse" aria-hidden="true"></div>
+              </div>
+            </button>
+            <button type="button" onclick="window.history.back();" class="back-button">
+              <div class="overlap-2">
+                <span class="button-text">Back</span>
+                <div class="ellipse" aria-hidden="true"></div>
+              </div>
+            </button>
+          </form>
+          
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

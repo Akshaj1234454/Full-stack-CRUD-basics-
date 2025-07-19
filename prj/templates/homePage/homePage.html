@@ -1,0 +1,64 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Increment - Homepage</title>
+    <link rel="stylesheet" href="{% static 'figma/css/style.css' %}">
+</head>
+<body>
+    <main class="homepage">
+        <header class="header-section">
+
+        <section class="title-section">
+            <h1 class="main-title">Data Increment</h1>
+        </section>
+
+        <section class="description-section">
+            <p class="description-text">
+                Use this website to enter your information in the database through the
+                django framework
+            </p>
+        </section>
+        </header>
+        <section class="button-section">
+              <button class="action-button" onclick="location.href='{% url 'dataApp' %}'">
+                  <div class="button-background"></div>
+                  <div class="button-text">Add Data</div>
+                  <div class="button-dot">
+                      <svg width="1" height="1" viewBox="0 0 1 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="0.5" cy="0.5" r="0.5" fill="black"></circle>
+                      </svg>
+                  </div>
+              </button>
+
+              <button class="action-button" onclick="location.href='{% url 'scrollPage' %}'">
+                  <div class="button-background"></div>
+                  <div class="button-text">Entries/Update</div>
+                  <div class="button-dot">
+                      <svg width="1" height="1" viewBox="0 0 1 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="0.5" cy="0.5" r="0.5" fill="black"></circle>
+                      </svg>
+                  </div>
+              </button>
+              
+          </section>
+
+    </main>
+
+    <script>
+        function handleAddData() {
+            console.log("Add Data clicked");
+            // Add data functionality to be implemented
+        }
+
+        function handleSeeEntries() {
+            console.log("See Entries clicked");
+            // See entries functionality to be implemented
+        }
+    </script>
+</body>
+</html>

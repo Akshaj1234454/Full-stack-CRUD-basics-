@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data View and Search</title>
+    <link rel="stylesheet" href="{% static 'figma/css/scrollPage.css' %}">
+</head>
+<body>
+    <main class="data-view-container">
+
+        <header class="entries-header">
+            <h1>Entries</h1>
+        </header>
+
+        <form class="search-input-container" method="get" action="{% url 'scrollPage' %}">
+            <div class="search-input-field"></div>
+            <input type="text" name="q" class="search-input" placeholder="Search" value="{{ request.GET.q }}">
+            <button class="search-button" type="submit">
+                <div class="button-background"></div>
+                <span class="button-text">Search</span>
+            </button>
+        </form>
+        <a href="{% url 'homePage' %}" class="home-button">
+            <div class="button-background"></div>
+            <span class="button-text">Home</span>
+        </a>
+        <div class="content-background">
+            <div class="entries-scroll-wrapper">
+                {% for entry in entries %}
+                    <form action="{% url 'editEntry' entry.srNo %}" method="get">
+                        <button type="submit" class = "entry-item-button" onclick="handleEntryClick('{{ entry.srNo }}')">
+                            <p><strong>Serial No:</strong> {{ entry.srNo }}</p>
+                            <p><strong>Name:</strong> {{ entry.name }}</p>
+                            <p><strong>Age:</strong> {{ entry.age }}</p>
+                            <p><strong>Contact:</strong> {{ entry.contact }}</p>
+                            <p><strong>City:</strong> {{ entry.city }}</p>
+                        </button>
+                    </form>
+                {% endfor %}
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function handleSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput.value.trim();
+            if (query) {
+                console.log('Searching for:', query);
+                // Add your search logic here
+            }
+        }
+
+        // Allow Enter key to trigger search
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleSearch();
+            }
+        });
+    </script>
+</body>
+</html>
